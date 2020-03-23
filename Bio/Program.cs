@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Woensdag18_03
+namespace MiniBio
 {
     class Program
     {
@@ -21,14 +21,13 @@ namespace Woensdag18_03
             string naamAchternaam = "Combée";
             string adresStraatNaam = "Fazantstraat";
             string adresHuisNummer = "144"; // sommige huisnummers zijn met 144a of 135b, vandaar keuze voor string.
-            int adresPostcodeNummers = 7523;
-            string adresPostcodeLetters = "EC";
+            string adresPostcode = "7523EC";
             string adresStad = "Enschede";
             int leeftijd = 42;
             Console.Write($@"
 {naamVoorNaam} {naamAchternaam}
 {adresStraatNaam} {adresHuisNummer}
-{adresPostcodeNummers}{adresPostcodeLetters} {adresStad}
+{adresPostcode} {adresStad}
 {leeftijd} jaar
             ");
 
@@ -38,6 +37,7 @@ namespace Woensdag18_03
 *** {naamVoorNaam} ***
 ********************
              ");
+            Console.ReadKey();
         }
     }
 }
