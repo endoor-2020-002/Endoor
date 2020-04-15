@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InputOutput
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-
-            // BMI calculator
+  // BMI calculator
             string gewichtInput;
             string lengteInput;
             double gewicht; // in kg
@@ -32,7 +19,3 @@ namespace InputOutput
 
             Console.WriteLine($"Je BMI is {bmi}");
             Console.ReadKey();
-
-        }
-    }
-}
