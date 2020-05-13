@@ -6,22 +6,29 @@ using System.Threading.Tasks;
 
 namespace SnailRace
 {
-    class Snail(int minSpeed, int maxSpeed, nameSnail)
+    public class Snail(int minSpeed, int maxSpeed, nameSnail)
     {
-        //Instance variables
-        int minSpeed;
-        int maxSpeed;
-        string nameSnail;
+                   
+        
+        static void Main(string[] args)
+        {
+            //Instance variables
+            int minSpeed;
+            int maxSpeed;
+            string nameSnail;
 
-        //Constructor
-        public CreateSnail()
-        { 
-            
 
-        }
+
+            //Constructor to create snails
+            public CreateSnail()
+            {
+
+                // return namesnail, snailmaxspoeed, snailmin speed
+            }
 
             //Method
-
-
+        }
     }
 }
+
+
