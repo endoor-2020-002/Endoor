@@ -14,7 +14,7 @@ namespace TripPlanner
             //greeting();
             //travelTimeBudget();
             //timeDifference();
-            areaUnitConversion();
+           //areaUnitConversion(); -< todo
             Console.ReadKey();
         }
 
@@ -100,7 +100,7 @@ namespace TripPlanner
             Console.WriteLine($"That means that when it is midnight at home it will me {timeDifference} in your travel destination and when it is noon at home it will be {timeDifferenceAtNoon}");
             */
         }
-
+        /*
         public static void areaUnitConversion()
         {
             decimal destinationArea;
@@ -113,12 +113,12 @@ namespace TripPlanner
                 Console.WriteLine("Please enter the value in numbers");
             }
             
-            beep = (destinationArea * (decimal)(0,621371));
+            beep = (destinationArea * 0,621371m);
 
             destinationAreaInMiles = String.Format("{0, n2}", beep);
 
             Console.WriteLine($"In miles that is {destinationAreaInMiles}");
         }
-
+        */
     }
 }
