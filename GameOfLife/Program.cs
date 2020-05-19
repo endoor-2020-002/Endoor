@@ -19,6 +19,7 @@ namespace GameOfLife
 
             //frame loop start
             //show the grid for a set amount of time
+            // where a string "[ ]" for 0 and a string "[*]" for 1. -> Maybe look for better suited characters if it looks ugly.
 
             //for loop start
             //for each coord(x,y) check if the 8 adjacent coords are 1 or 0 and count them

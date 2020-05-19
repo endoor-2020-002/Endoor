@@ -6,28 +6,33 @@ using System.Threading.Tasks;
 
 namespace SnailRace
 {
-    public class Snail(int minSpeed, int maxSpeed, nameSnail)
+    public class Snail
     {
-                   
-        
-        static void Main(string[] args)
+        // fields
+        public int _minSpeed { get; }
+        public int _maxSpeed { get; }
+        public int _snailPosition { get; set; }
+
+        //constructor
+        public Snail(int minspeed, int maxspeed)
         {
-            //Instance variables
-            int minSpeed;
-            int maxSpeed;
-            string nameSnail;
-
-
-
-            //Constructor to create snails
-            public CreateSnail()
-            {
-
-                // return namesnail, snailmaxspoeed, snailmin speed
-            }
-
-            //Method
+            _minSpeed = minspeed;
+            _maxSpeed = maxspeed;
+            _snailPosition = 0;
         }
+
+        //methods
+        public Move()
+        {   
+            //get current snailposition
+
+            //moves the snail to a new position based on a random number between its min and max speed
+            _snailPosition += Random.Next(_minSpeed, _maxSpeed);
+
+            // set new snailPostion
+            return _snailPosition;
+        }
+
     }
 }
 
