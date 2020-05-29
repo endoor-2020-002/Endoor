@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,36 +12,48 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            // create an coordX coordY grid with randomly values of O(dead) or 1(alive) 
-            int verticalResolution = 40;
-            int horizontalResolution = 20;
-            int[,] coordinates = new int[horizontalResolution + 1, verticalResolution +1] ; //x y array for the world
+            // create an coordX coordY grid with randomly values of O(dead) or 1(alive).
+            int verticalResolution = 60;
+            int horizontalResolution = 30;
+
+            //x y array for the world.
+            int[,] coordinates = new int[horizontalResolution + 1, verticalResolution +1];
+            
+            // temporary array that functions as framebuffer
+            int[,] nextFrameCoordinates = new int[horizontalResolution + 1, verticalResolution + 1];
+
             int whileLoopInitator = 0;
-            int animationFrames = 100; // total amount of frames the simulation runs
-            int frameSpeed = 10000; //length of the simulation in frames of x milliseconds, depending on your CPU speed. I used Thread.Sleep(x)
-            Random lifeOrDeath = new Random(); // used to generate a world of cells
+
+            // total amount of frames the simulation runs.
+            int animationFrames = 100;
+
+            //length of the simulation in frames of x milliseconds, depending on your CPU speed. I used Thread.Sleep(x).
+            int frameSpeed = 4000;
+
+            // used to generate a random world of cells.
+            Random lifeOrDeath = new Random(); 
+
+            // used to evaluate if a cell should live or die.
             int counterLifeProximity = 0; 
 
 
-            // create an coordX coordY grid with randomly values of O(dead) or 1(alive) 
+            // create an coordX coordY grid with randomly values of O(dead) or 1(alive).
             
 
-            // build startergrid and fill randomly
+            // build startergrid and fill randomly.
             for (int x = 0;  x < horizontalResolution; x++) 
             {
 
                 for (int y = 0; y < verticalResolution; y++)
                 {
-                    coordinates[x, y] = lifeOrDeath.Next(2); // or set all to 0; to test the glider
+                    coordinates[x, y] = 0; // lifeOrDeath.Next(2); // or set all to 0; to test the glider.
                 }
                 
             }
 
             //test forms 
 
-
             // block
-            
             coordinates[2, 2] = 1;
             coordinates[2, 3] = 1;
             coordinates[3, 2] = 1;
@@ -55,8 +65,7 @@ namespace GameOfLife
             coordinates[18, 12] = 1;
             coordinates[18, 13] = 1;
 
-
-            //glider // only shows 3 live cells at first frame ?!
+            //glider // is not working and I have no idea why.
             coordinates[8, 13] = 1;
             coordinates[9, 14] = 1;
             coordinates[10, 12] = 1;
@@ -67,6 +76,22 @@ namespace GameOfLife
             //frame loop start
             while (whileLoopInitator < animationFrames)
             {
+                //show the current frame
+                for (int x = 1; x < horizontalResolution; x++)
+                {
+
+                    for (int y = 1; y < verticalResolution; y++)
+                    {
+                        Console.Write($"{coordinates[x, y]}");
+                    }
+                    //next line on screen
+                    Console.Write("\n");
+                }
+                // wait a bit and clear the console
+                Thread.Sleep(frameSpeed);
+                Console.Clear();
+
+                // calculate status of cell and change it when needed.
                 // issue: the borders cannot be evaluated as that would give values outside the coordinates[x,y] array.
                 for (int x = 1; x < horizontalResolution; x++)
                 {
@@ -76,63 +101,68 @@ namespace GameOfLife
                         // reset the life counter
                         counterLifeProximity = 0;
 
-                        //check if it's a live cell, if it is live, start creating or terminating lives
-                        if (coordinates[x, y] == 1)
+                        // start counting life around you.
+                        if (coordinates[x - 1, y] == 1) // life to the left
+                            counterLifeProximity++;
+                        if (coordinates[x + 1, y] == 1) //life to the right
+                            counterLifeProximity++;
+                        if (coordinates[x - 1, y - 1] == 1) // life above left
+                            counterLifeProximity++;
+                        if (coordinates[x, y - 1] == 1) // life above 
+                            counterLifeProximity++;
+                        if (coordinates[x + 1, y - 1] == 1) // life above right
+                            counterLifeProximity++;
+                        if (coordinates[x - 1, y + 1] == 1) // life below left
+                            counterLifeProximity++;
+                        if (coordinates[x, y + 1] == 1) // life below
+                            counterLifeProximity++;
+                        if (coordinates[x + 1, y + 1] == 1) // life below right
+                            counterLifeProximity++;
+
+                        // change state of life depending on life in proximity.
+                        switch (counterLifeProximity)
                         {
-                            // start counting life around you.
-                            if (coordinates[x - 1, y] == 1) // life to the left
-                                counterLifeProximity++;
-                            if (coordinates[x + 1, y] == 1) //life to the right
-                                counterLifeProximity++;
-                            if (coordinates[x - 1, y - 1] == 1) // life above left
-                                counterLifeProximity++;
-                            if (coordinates[x, y - 1] == 1) // life above 
-                                counterLifeProximity++;
-                            if (coordinates[x + 1, y - 1] == 1) // life above right
-                                counterLifeProximity++;
-                            if (coordinates[x - 1, y + 1] == 1) // life below left
-                                counterLifeProximity++;
-                            if (coordinates[x, y + 1] == 1) // life below
-                                counterLifeProximity++;
-                            if (coordinates[x + 1, y + 1] == 1) // life below right
-                                counterLifeProximity++;
+                            // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+                            case 0:
+                            case 1:
+                                nextFrameCoordinates[x, y] = 0;
+                                break;
 
-                            // change state of life depending on life in proximity
-                            switch (counterLifeProximity)
-                            {
-                                // Any live cell with fewer than two live neighbours dies, as if by underpopulation
-                                case 0:
-                                case 1:
-                                case 2:
-                                    coordinates[x, y] = 0;
+                            // Any live cell with two or three live neighbours lives on to the next generation.
+                            case 2:
+                                if (coordinates[x, y] == 1)
+                                {
+                                    nextFrameCoordinates[x, y] = 1;
                                     break;
-
-                                //Any live cell with two or three live neighbours lives on to the next generation. <- no code needed
-
-                                // Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-                                case 3:
-                                    coordinates[x, y] = 1;
+                                }
+                                else
+                                { 
+                                    nextFrameCoordinates[x, y] = 0;
                                     break;
+                                }
+                            // Any live cell with two or three live neighbours lives on to the next generation.
+                            // Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+                            case 3:
+                                nextFrameCoordinates[x, y] = 1;
+                                break;
 
-                                // Any live cell with more than three live neighbours dies, as if by overpopulation.
-                                case 4:
-                                case 5:
-                                case 6:
-                                case 7:
-                                case 8:
-                                    coordinates[x, y] = 0;
-                                    break;
-                            }
+                            // Any live cell with more than three live neighbours dies, as if by overpopulation.
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                            case 8:
+                                nextFrameCoordinates[x, y] = 0;
+                                break;
                         }
-                        // write the current cell
-                        Console.Write($"{coordinates[x, y]}");
-                    }
-                    // newline at the end of each horizontal line of cells
-                    Console.Write("\n");                  
+                        
+                    }                                 
                 }
-                whileLoopInitator++; // next frame <- needs clearer comment...
-                Thread.Sleep(frameSpeed);
-                Console.Clear();
+                whileLoopInitator++; // next frame counter <- might need clearer comment...
+
+                // write the current modified cell array frame buffer back to the array to be modified
+                coordinates = nextFrameCoordinates;
+                
             }
             Console.ReadKey();
         }
