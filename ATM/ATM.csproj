@@ -46,7 +46,6 @@
     <Compile Include="ATMdriver.cs" />
     <Compile Include="CheckingAccount.cs" />
     <Compile Include="SavingsAccount.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

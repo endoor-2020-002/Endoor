@@ -19,7 +19,7 @@ namespace ATM
             _interestRate = interestRate;
         }
 
-        public SavingsAccount(decimal balance) : this(balance, 0.01m)
+        public SavingsAccount(decimal balance) : this(balance, 0.1m)
         {
         }
 
