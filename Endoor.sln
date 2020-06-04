@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "ATM\ATM.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorPt1", "CalculatorPt1\CalculatorPt1.csproj", "{50D5E3DE-050B-40BA-A590-ACAAA374A83B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringConverter", "StringConverter\StringConverter.csproj", "{C789C914-AD97-4198-85F8-3999DBB8D090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{50D5E3DE-050B-40BA-A590-ACAAA374A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50D5E3DE-050B-40BA-A590-ACAAA374A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50D5E3DE-050B-40BA-A590-ACAAA374A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C789C914-AD97-4198-85F8-3999DBB8D090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C789C914-AD97-4198-85F8-3999DBB8D090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C789C914-AD97-4198-85F8-3999DBB8D090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C789C914-AD97-4198-85F8-3999DBB8D090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
