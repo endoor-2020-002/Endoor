@@ -27,9 +27,23 @@ namespace String_Converter
             this.InitializeComponent();
         }
 
-        private void Reverse(object sender, RoutedEventArgs e)
+        private void ReverseClick(object sender, RoutedEventArgs e)
         {
-
+            ResultTextBlock.Text = StringConverter.Reverse(InputTextBox.Text);
         }
+
+        private void PalindromeClick(object sender, RoutedEventArgs e)
+        {
+            if (StringConverter.IsPalindrome(InputTextBox.Text) == true)
+                ResultTextBlock.Text = "It's a palindrome!";
+            else
+                ResultTextBlock.Text = "It's NOT a palindrome!";
+        }
+
+        private void PigLatinateClick(object sender, RoutedEventArgs e)
+        {
+            ResultTextBlock.Text = StringConverter.PigLatinate(InputTextBox.Text);
+        }
+
     }
 }

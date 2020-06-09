@@ -9,9 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="ReverseButton" Content="Reverse" Margin="92,292,0,0" VerticalAlignment="Top" Click="Reverse" Height="126" Width="167"/>
-        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="92,511,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="81" Width="1092"/>
-        <TextBox x:Name="TextInputBox" HorizontalAlignment="Left" Margin="92,106,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="110" Width="1123"/>
+        <Button x:Name="ReverseButton" Content="Reverse" Margin="92,292,0,0" VerticalAlignment="Top" Click="ReverseClick" Height="126" Width="167" FontSize="24"/>
+        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="92,511,0,0" Text="Resultaat van de bewerking komt hier." TextWrapping="Wrap" VerticalAlignment="Top" Height="81" Width="1092" FontSize="24"/>
+        <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" Margin="92,138,0,0" Text="Voer hier tekst in" TextWrapping="Wrap" VerticalAlignment="Top" Height="110" Width="1123" FontSize="24"/>
+        <Button x:Name="PalindromeButton" Content="Is Palindrome?" Margin="315,292,0,0" VerticalAlignment="Top" Height="126" Width="202" Click="PalindromeClick" FontSize="24"/>
+        <Button x:Name="PigLatinateButton" Content="Pig Latin" Margin="591,292,0,0" VerticalAlignment="Top" Height="126" Width="199" Click="PigLatinateClick" FontSize="24"/>
+        <TextBlock x:Name="Title" HorizontalAlignment="Left" Margin="348,51,0,0" Text="Project String Converter" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="406" FontSize="36"/>
 
     </Grid>
 </Page>
