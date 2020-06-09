@@ -10,6 +10,7 @@ namespace StringConverter
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Write something");
 
         }
     }
