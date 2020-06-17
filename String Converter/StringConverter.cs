@@ -45,6 +45,7 @@ namespace String_Converter
 
         public static string PigLatinate(string str)
         {
+                        
             if (str.Contains('a'))
                 return str + "has an a and ay";
             else
